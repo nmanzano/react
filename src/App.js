@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
 // import Radium, {StyleRoot} from 'radium'
 
@@ -43,12 +43,6 @@ class App extends Component {
 
     this.setState({
       persons: persons
-
-      // persons: [
-      //   { name: 'Max', age: 28 },
-      //   { name: event.target.value, age: 29 },
-      //   { name: 'Stephanie', age: 26 },
-      // ]
     })
   }
 
@@ -93,50 +87,29 @@ class App extends Component {
               changed={(event) => this.nameChangeHandler(event, person.id)} />
           })
         }
-          {/* <Person  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.switchNameHandler.bind(this, "Max!")} changed={this.nameChangeHandler}> My Hobbies: Racing </Person>
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/> */}
+
         </div>
       );
       style.backgroundColor = 'red';
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // }
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <=2) {
-      classes.push('red'); //classes = ['red']
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); //classes = ['red', 'bold']
+      assignedClasses.push(classes.bold);
     }
 
     return (
-      // <StyleRoot>
-      <div className="App">  {/* this adds css style */}
+      <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}> This is really working! </p>
+        <p className={assignedClasses.join(' ')}> This is really working! </p>
       <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
       {persons}
-      {/* {
-        this.state.showPersons ?
-        <div>
-          <Person  name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.switchNameHandler.bind(this, "Max!")} changed={this.nameChangeHandler}> My Hobbies: Racing </Person>
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        </div> : null
-      } */}
-
-
     </div>
-  // </StyleRoot>
     );
-    // return React.createElement('div', null, 'h1', 'Hi, I\'m a React App!!!') takes h1 to mean font
-    // return React.createElement('div', null, React.createElement('h1', null, 'Does this work now?'))
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?')) //this adds style
   }
 }
 
-export default App; // TODO: Radium (App)
+export default App;
